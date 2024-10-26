@@ -1,35 +1,25 @@
-import React from 'react'
-import {  useRecoilStateLoadable } from 'recoil'
-import { allTeachersAtom, StudentpersonalInfoAtom,  } from '../components/atoms'
-//list of teachers
-//run a filter on them 
-//selection and routing to /teacher/[id]
-//userinfo
+import React from "react";
+import { useRecoilValueLoadable } from "recoil";
+import { allTeachersAtom } from "../components/atoms";
+import PICard from "../components/PICard";
+//list of allteachers
+//run a filter on them
+
 type teacher = {
-    id: string
-    name: string,
-    email: string,
-    image: string
-
-}
-
-type personalInfo = {
-    id: string,
-    name: string,
-    email: string
-    isTeacher: boolean,
-    teachers: teacher[]
-}
+  id: string;
+  name: string;
+  email: string;
+  image: string;
+};
 
 const StudentDashboard = () => {
-    const personalInfo = useRecoilStateLoadable<personalInfo>(StudentpersonalInfoAtom);
-    const allteachers = useRecoilStateLoadable<teacher[]>(allTeachersAtom);
+  const allteachers = useRecoilValueLoadable<teacher[]>(allTeachersAtom);
   return (
     <div>
-        {JSON.stringify(personalInfo)}
-        {JSON.stringify(allteachers)}
+      <PICard />
+      {JSON.stringify(allteachers)}
     </div>
-  )
-}
+  );
+};
 
-export default StudentDashboard
+export default StudentDashboard;
