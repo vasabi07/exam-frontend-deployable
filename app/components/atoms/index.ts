@@ -48,7 +48,7 @@ export const teacherIdSelector = selector({
     get:async ({get})=>{
         const teacherId = get(teacherIdAtom);
         if(!teacherId) return null;
-        const response = await axios.get(`http://localhost:8000/${teacherId}`,{
+        const response = await axios.get(`http://localhost:8000/teacher/${teacherId}`,{
             withCredentials: true
         })
         return response.data.payload
